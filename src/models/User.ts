@@ -1,21 +1,26 @@
 import mongoose from "mongoose"
 
 const UserSchema = new mongoose.Schema({
-  nom: { type: String, required: true },
-  age: { type: Number, required: true },
-  email: { type: String, required: true, unique: true }, // add email for login
-  password: { type: String, required: true }, // hashed password
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+
+  username: String,
+  age: Number,
+
   abonnement: {
-    type: { type: String, required: true },
+    type: {
+      type: String,
+    },
     paiement: {
-      montant: { type: Number, required: true },
-      devise: { type: String, required: true },
+      montant: Number,
+      devise: String,
     },
   },
+
   progression: {
-    poids: { type: Number, required: true },
-    squat: { type: Number, required: true },
+    poids: Number,
+    squat: Number,
   },
-}, { timestamps: true })
+})
 
 export const User = mongoose.model("users", UserSchema)
